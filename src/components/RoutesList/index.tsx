@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { 
   Container, 
@@ -13,10 +13,139 @@ import {
   FolderTitle,
   Request,
   Tipo,
-  Nome
+  Nome,
+  ContentIcons,
+  AddIcon,
+  ArrowIcon
 } from './styles'
 
 const RoutesList: React.FC = () => {
+  const [folders, setFolders] = useState([
+    {
+      id: 1,
+      title: 'Usuários',
+      open: true,
+      requests: [
+        {
+          tipo: 'get',
+          nome: 'List'
+        },
+        {
+          tipo: 'del',
+          nome: 'Destroy'
+        },
+        {
+          tipo: 'put',
+          nome: 'Update'
+        },
+        {
+          tipo: 'post',
+          nome: 'Store'
+        }
+      ]
+    },
+    {
+      id: 2,
+      title: 'Estabelecimentos',
+      open: true,
+      requests: [
+        {
+          tipo: 'get',
+          nome: 'List'
+        },
+        {
+          tipo: 'del',
+          nome: 'Destroy'
+        },
+        {
+          tipo: 'put',
+          nome: 'Update'
+        },
+        {
+          tipo: 'post',
+          nome: 'Store'
+        }
+      ]
+    },
+    {
+      id: 3,
+      title: 'Restaurantes',
+      open: true,
+      requests: [
+        {
+          tipo: 'get',
+          nome: 'List'
+        },
+        {
+          tipo: 'del',
+          nome: 'Destroy'
+        },
+        {
+          tipo: 'put',
+          nome: 'Update'
+        },
+        {
+          tipo: 'post',
+          nome: 'Store'
+        }
+      ]
+    },
+    {
+      id: 4,
+      title: 'Funcionários',
+      open: true,
+      requests: [
+        {
+          tipo: 'get',
+          nome: 'List'
+        },
+        {
+          tipo: 'del',
+          nome: 'Destroy'
+        },
+        {
+          tipo: 'put',
+          nome: 'Update'
+        },
+        {
+          tipo: 'post',
+          nome: 'Store'
+        }
+      ]
+    },
+    {
+      id: 5,
+      title: 'Empresas',
+      open: true,
+      requests: [
+        {
+          tipo: 'get',
+          nome: 'List'
+        },
+        {
+          tipo: 'del',
+          nome: 'Destroy'
+        },
+        {
+          tipo: 'put',
+          nome: 'Update'
+        },
+        {
+          tipo: 'post',
+          nome: 'Store'
+        }
+      ]
+    }
+  ])
+
+  function handleOpen(id: number) {
+    const attFolders = folders.map(folder => {
+      return folder.id === id ? { ...folder, open: !folder.open } : folder
+    })
+
+    setFolders(attFolders)
+  }
+
   return (
     <Container>
       <InfoBar>
@@ -24,209 +153,37 @@ const RoutesList: React.FC = () => {
       </InfoBar>
       <FilterBar>
         <FilterField placeholder="filter" />
+        <ContentIcons>
+          <AddIcon />
+          <ArrowIcon />
+        </ContentIcons>
       </FilterBar>
       <WorkspaceList>
         <PrincipalFolder>
-          <Folder>
-            <InfoFolder>
-              <FolderIcon />
-              <FolderTitle>
-                Usuários
-              </FolderTitle>
-            </InfoFolder>
-            <Request>
-              <Tipo id="get">
-                get
-              </Tipo>
-              <Nome>
-                List
-              </Nome>
-            </Request>
-            <Request>
-              <Tipo id="del">
-                del
-              </Tipo>
-              <Nome>
-                Destroy
-              </Nome>
-            </Request>
-            <Request>
-              <Tipo id="put">
-                put
-              </Tipo>
-              <Nome>
-                Update
-              </Nome>
-            </Request>
-            <Request>
-              <Tipo id="post">
-                post
-              </Tipo>
-              <Nome>
-                Store
-              </Nome>
-            </Request>
-          </Folder>
-          <Folder>
-            <InfoFolder>
-              <FolderIcon />
-              <FolderTitle>
-                Estabelecimentos
-              </FolderTitle>
-            </InfoFolder>
-            <Request>
-              <Tipo id="get">
-                get
-              </Tipo>
-              <Nome>
-                List
-              </Nome>
-            </Request>
-            <Request>
-              <Tipo id="del">
-                del
-              </Tipo>
-              <Nome>
-                Destroy
-              </Nome>
-            </Request>
-            <Request>
-              <Tipo id="put">
-                put
-              </Tipo>
-              <Nome>
-                Update
-              </Nome>
-            </Request>
-            <Request>
-              <Tipo id="post">
-                post
-              </Tipo>
-              <Nome>
-                Store
-              </Nome>
-            </Request>
-          </Folder>
-          <Folder>
-            <InfoFolder>
-              <FolderIcon />
-              <FolderTitle>
-                Restaurantes
-              </FolderTitle>
-            </InfoFolder>
-            <Request>
-              <Tipo id="get">
-                get
-              </Tipo>
-              <Nome>
-                List
-              </Nome>
-            </Request>
-            <Request>
-              <Tipo id="del">
-                del
-              </Tipo>
-              <Nome>
-                Destroy
-              </Nome>
-            </Request>
-            <Request>
-              <Tipo id="put">
-                put
-              </Tipo>
-              <Nome>
-                Update
-              </Nome>
-            </Request>
-            <Request>
-              <Tipo id="post">
-                post
-              </Tipo>
-              <Nome>
-                Store
-              </Nome>
-            </Request>
-          </Folder>
-          <Folder>
-            <InfoFolder>
-              <FolderIcon />
-              <FolderTitle>
-                Funcionários
-              </FolderTitle>
-            </InfoFolder>
-            <Request>
-              <Tipo id="get">
-                get
-              </Tipo>
-              <Nome>
-                List
-              </Nome>
-            </Request>
-            <Request>
-              <Tipo id="del">
-                del
-              </Tipo>
-              <Nome>
-                Destroy
-              </Nome>
-            </Request>
-            <Request>
-              <Tipo id="put">
-                put
-              </Tipo>
-              <Nome>
-                Update
-              </Nome>
-            </Request>
-            <Request>
-              <Tipo id="post">
-                post
-              </Tipo>
-              <Nome>
-                Store
-              </Nome>
-            </Request>
-          </Folder>
-          <Folder>
-            <InfoFolder>
-              <FolderIcon />
-              <FolderTitle>
-                Empresas
-              </FolderTitle>
-            </InfoFolder>
-            <Request>
-              <Tipo id="get">
-                get
-              </Tipo>
-              <Nome>
-                List
-              </Nome>
-            </Request>
-            <Request>
-              <Tipo id="del">
-                del
-              </Tipo>
-              <Nome>
-                Destroy
-              </Nome>
-            </Request>
-            <Request>
-              <Tipo id="put">
-                put
-              </Tipo>
-              <Nome>
-                Update
-              </Nome>
-            </Request>
-            <Request>
-              <Tipo id="post">
-                post
-              </Tipo>
-              <Nome>
-                Store
-              </Nome>
-            </Request>
-          </Folder>
+          {
+            folders.map(folder => (
+              <Folder className={folder.open ? 'open' : ''} key={folder.id}>
+                <InfoFolder onClick={() => handleOpen(folder.id)}>
+                  <FolderIcon />
+                  <FolderTitle>
+                    { folder.title }
+                  </FolderTitle>
+                </InfoFolder>
+                {
+                  folder.requests.map(request => (
+                    <Request>
+                      <Tipo id={ request.tipo }>
+                        { request.tipo }
+                      </Tipo>
+                      <Nome>
+                        { request.nome }
+                      </Nome>
+                    </Request>
+                  ))
+                }
+              </Folder>
+            ))
+          }
           <Request>
             <Tipo id="post">
               post
