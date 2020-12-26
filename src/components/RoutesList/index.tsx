@@ -3,8 +3,6 @@ import React, { useState } from 'react'
 import { 
   Container, 
   InfoBar, 
-  FilterBar, 
-  FilterField, 
   WorkspaceList ,
   PrincipalFolder,
   Folder,
@@ -13,11 +11,10 @@ import {
   FolderTitle,
   Request,
   Tipo,
-  Nome,
-  ContentIcons,
-  AddIcon,
-  ArrowIcon
+  Nome
 } from './styles'
+
+import FilterBar from '../FilterBar'
 
 const RoutesList: React.FC = () => {
   const [folders, setFolders] = useState([
@@ -151,13 +148,7 @@ const RoutesList: React.FC = () => {
       <InfoBar>
         excelsiumjs
       </InfoBar>
-      <FilterBar>
-        <FilterField placeholder="filter" />
-        <ContentIcons>
-          <AddIcon />
-          <ArrowIcon />
-        </ContentIcons>
-      </FilterBar>
+      <FilterBar />
       <WorkspaceList>
         <PrincipalFolder>
           {
