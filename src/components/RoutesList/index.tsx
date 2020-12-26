@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Container, InfoBar } from './styles'
+import { Container, InfoBar, FilterBar, FilterField } from './styles'
 
 const RoutesList: React.FC = () => {
   return (
@@ -8,6 +8,9 @@ const RoutesList: React.FC = () => {
       <InfoBar>
         Excelsiumjs
       </InfoBar>
+      <FilterBar>
+        <FilterField />
+      </FilterBar>
     </Container>
   )
 }
