@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { FaRegFolder } from 'react-icons/fa'
+import { FaRegFolder, FaPlusCircle, FaSortDown } from 'react-icons/fa'
 
 export const Container = styled.div`
   width: 22%;
@@ -19,6 +19,7 @@ export const InfoBar = styled.div`
 
 export const FilterBar = styled.div`
   padding: 1rem;
+  display: flex;
 `
 
 export const FilterField = styled.input`
@@ -26,9 +27,29 @@ export const FilterField = styled.input`
   background-color: transparent;
   border: 1px solid var(--gray);
   border-radius: 3px;
-  padding: 0.6rem 1rem;
-  font-size: 1.2rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
   color: var(--gray);
+`
+
+export const ContentIcons = styled.div`
+  display: flex;
+  align-items: center;
+  padding-left: 1.2rem;
+  cursor: pointer;
+`
+
+export const AddIcon = styled(FaPlusCircle)`
+  width: 16px;
+  height: 16px;
+  color: var(--foreground);
+  margin-right: 0.2rem;
+`
+
+export const ArrowIcon = styled(FaSortDown)`
+  width: 18px;
+  height: 18px;
+  color: var(--foreground);
 `
 
 export const WorkspaceList = styled.div`
@@ -54,9 +75,17 @@ export const PrincipalFolder = styled.ul`
 
 export const Folder = styled.ul`
   padding: 0 1.2rem;
+  user-select: none;
   > li {
     padding-left: 1.2rem;
     padding-right: 1.2rem;
+    user-select: none;
+    display: none;
+  }
+  &.open {
+    > li {
+      display: flex;
+    }
   }
 `
 
@@ -81,7 +110,7 @@ export const InfoFolder = styled.div`
 export const FolderIcon = styled(FaRegFolder)`
   width: 1.1rem;
   height: 1.1rem;
-  color: #fff;
+  color: var(--foreground);
   margin-right: 0.8rem;
 `
 
@@ -95,7 +124,7 @@ export const Tipo = styled.div`
   text-transform: uppercase;
   font-size: 0.6rem;
   width: 2.6rem;
-  color: #fff;
+  color: var(--foreground);
   &#get {
     color: var(--purple);
   }
