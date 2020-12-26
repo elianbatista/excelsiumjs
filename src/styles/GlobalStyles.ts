@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+  
   * {
     margin: 0;
     padding: 0;
@@ -13,7 +15,7 @@ export default createGlobalStyle`
   *, button, input {
     border: 0;
     outline: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
   :root {
     --primary: #36393f;
