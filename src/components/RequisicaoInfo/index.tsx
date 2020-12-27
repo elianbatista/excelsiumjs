@@ -6,18 +6,18 @@ const RequisicaoInfo: React.FC = () => {
   const [code, setCode] = useState()
 
   const options = {
-    selectOnLineNumbers: true
+    selectOnLineNumbers: true,
+    colorDecorators: true,
+    columnSelection: true
   };
 
   return (
     <Container>
       <MonacoEditor
-        width="800"
         height="600"
         language="json"
         theme="vs-dark"
         value={code}
-        options={options}
       />
     </Container>
   )

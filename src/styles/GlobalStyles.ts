@@ -34,4 +34,8 @@ export default createGlobalStyle`
     --red: #ff5555;
     --yellow: #f1fa8c;
   }
+
+  .view-lines.monaco-mouse-cursor-text {
+    background-color: rgb(40 42 54) !important;
+  }
 `
