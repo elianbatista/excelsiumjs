@@ -1,16 +1,15 @@
 import React from 'react'
 
-import { Container, TopoInfo } from './styles'
+import { Container } from './styles'
 
 import RoutesList from '../RoutesList'
+import RequisicaoInfo from '../RequisicaoInfo'
 
 const Layout: React.FC = () => {
   return (
     <Container>
-      <TopoInfo>
-        Excelsium.js
-      </TopoInfo>
       <RoutesList />
+      <RequisicaoInfo />
     </Container>
   )
 }
