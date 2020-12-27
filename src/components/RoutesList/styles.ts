@@ -15,18 +15,19 @@ export const InfoBar = styled.div`
   color: var(--foreground);
   font-size: 1.5rem;
   padding: 1.3rem 1.6rem;
+  z-index: 3;
 `
 
 export const WorkspaceList = styled.div`
   height: 100%;
   overflow-y: scroll;
-  padding: 0rem 1rem;
+  padding: 1.3rem 1rem;
 
   ::-webkit-scrollbar {
     width: 6px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: var(--purple);
+    background-color: var(--red);
     border-radius: 4px;
   }
   ::-webkit-scrolbbar-track {
