@@ -19,7 +19,8 @@ export default createGlobalStyle`
   }
   :root {
     --background: #282a36;
-    --current: #44475a;
+    --background2: #21222c;
+    --current: #343746;
     --selection: #44475a;
     --gray: #9E9E9E;
     --light-gray: #c9d1d9;

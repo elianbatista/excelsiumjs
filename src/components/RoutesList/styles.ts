@@ -4,22 +4,23 @@ import { FaRegFolder } from 'react-icons/fa'
 export const Container = styled.div`
   width: 22%;
   background-color: var(--current);
+  height: 100%;
   display: flex;
   flex-direction: column;
 `
 
 export const InfoBar = styled.div`
   width: 100%;
-  background-color: var(--background);
+  background-color: var(--background2);
   font-weight: 600;
   color: var(--foreground);
-  font-size: 1.5rem;
-  padding: 1.3rem 1.6rem;
+  font-size: 1.4rem;
+  padding: 1.2rem 1.6rem;
   z-index: 3;
 `
 
 export const WorkspaceList = styled.div`
-  height: 100%;
+  flex-grow: 1;
   overflow-y: scroll;
   padding: 1.3rem 1rem;
 
