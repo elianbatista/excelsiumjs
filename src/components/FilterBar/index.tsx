@@ -1,6 +1,15 @@
 import React from 'react'
 
-import { Container, FilterField, ContentIcons, AddIcon, ArrowIcon } from './styles'
+import { 
+  Container, 
+  FilterField, 
+  ContentIcons, 
+  AddIcon, 
+  ArrowIcon,
+  BoxAdd,
+  ButtonAdd,
+  Title,
+  FolderIcon } from './styles'
 
 const FilterBar: React.FC = () => {
   return (
@@ -9,6 +18,20 @@ const FilterBar: React.FC = () => {
       <ContentIcons>
         <AddIcon />
         <ArrowIcon />
+        <BoxAdd>
+          <ButtonAdd>
+            <AddIcon />
+            <Title>
+              Nova Requisição
+            </Title>
+          </ButtonAdd>
+          <ButtonAdd>
+            <FolderIcon />
+            <Title>
+              Nova Pasta
+            </Title>
+          </ButtonAdd>
+        </BoxAdd>
       </ContentIcons>
     </Container>
   )
