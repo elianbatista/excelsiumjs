@@ -4,17 +4,23 @@ import { FaRegFolder, FaPlusCircle, FaSortDown } from 'react-icons/fa'
 export const Container = styled.div`
   padding: 1rem;
   display: flex;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  z-index: 2;
+  //background-color: var(--current);
+  background-color: var(--red);
 `
 
 export const FilterField = styled.input`
   width: 100%;
   background-color: transparent;
-  border: 1px solid var(--gray);
+  border: 1px solid var(--foreground);
   border-radius: 3px;
   padding: 0.6rem 0.8rem;
   font-size: 1rem;
-  color: var(--gray);
+  color: var(--foreground);
+  ::placeholder {
+    color: var(--foreground);
+  }
 `
 
 export const ContentIcons = styled.div`
