@@ -9,7 +9,7 @@ import RequisicaoInfo from '../RequisicaoInfo'
 const Layout: React.FC = () => {
   return (
     <Container>
-      <NavBar tipo={2} url="http://localhost:3333/api/pagamento" />
+      <NavBar tipo="post" url="http://localhost:3333/api/pagamento" />
       <RoutesList />
       <RequisicaoInfo />
     </Container>
