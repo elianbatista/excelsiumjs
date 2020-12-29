@@ -108,7 +108,7 @@ pre[class*="language-"] {
 }
 
 .token.keyword {
-	color: var(--pink);
+	color: #66d9ef;
 }
 
 .token.regex,
