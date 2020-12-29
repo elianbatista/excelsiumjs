@@ -30,7 +30,7 @@ const CodeEditor: React.FC<Props> = ({
       const initSelect = evt.currentTarget.selectionStart
       const endSelect = evt.currentTarget.selectionEnd
       let endValue
-      if(initSelect != endSelect) {
+      if(initSelect !== endSelect) {
         endValue = content.substring(0, initSelect - 1) + "{" + content.substring(initSelect, endSelect) + "}" + content.substring(endSelect + 1, content.length)
         setContent(endValue)
       } else {
