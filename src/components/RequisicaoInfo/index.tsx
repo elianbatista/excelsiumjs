@@ -5,19 +5,19 @@ import MonacoEditor from 'react-monaco-editor'
 const RequisicaoInfo: React.FC = () => {
   const [code, setCode] = useState()
 
-  const options = {
-    selectOnLineNumbers: true,
-    colorDecorators: true,
-    columnSelection: true
-  };
-
   return (
     <Container>
       <MonacoEditor
-        height="600"
-        language="json"
-        theme="vs-dark"
+        language="html"
         value={code}
+        height='600'
+        options={{
+          selectOnLineNumbers: true,
+          roundedSelection: false,
+          cursorStyle: 'line',
+          automaticLayout: false,
+          theme: 'vs-dark',
+        }}
       />
     </Container>
   )
