@@ -18,8 +18,8 @@ export default createGlobalStyle`
     font-family: 'Ubuntu', sans-serif;
   }
   :root {
-    --background: #282a36;
-    --background2: #21222c;
+    --background: #21222c;
+    --background2: #282a36;
     --current: #343746;
     --selection: #44475a;
     --gray: #9E9E9E;
@@ -36,6 +36,16 @@ export default createGlobalStyle`
   }
 
   .view-lines.monaco-mouse-cursor-text {
-    background-color: rgb(40 42 54) !important;
+    background-color: var(--background) !important;
+  }
+  .margin-view-overlays {
+    background-color: var(--background) !important;
+  }
+  .line-numbers {
+    color: var(--comment) !important;
+  }
+  .minimap-decorations-layer {
+    background-color: var(--background) !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   }
 `
