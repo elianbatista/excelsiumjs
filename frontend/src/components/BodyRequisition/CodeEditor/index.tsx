@@ -52,7 +52,7 @@ const CodeEditor: React.FC<Props> = ({
   }
 
   useEffect(() => {
-    if(cursorPosition != 0.1) {
+    if(cursorPosition !== 0.1) {
       textareaRef.current?.setSelectionRange(cursorPosition, cursorPosition)
     }
   }, [cursorPosition])
