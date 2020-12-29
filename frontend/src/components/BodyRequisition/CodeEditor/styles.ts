@@ -55,6 +55,7 @@ export const Container = styled.div`
     z-index: 3;
     margin: 0;
     overflow-y: auto;
+    
     ::-webkit-scrollbar {
       width: 0px; 
       visibility: hidden;
