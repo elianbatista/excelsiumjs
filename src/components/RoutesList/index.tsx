@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 import { 
   Container, 
-  InfoBar, 
   WorkspaceList ,
   PrincipalFolder,
   Folder,
@@ -145,9 +144,6 @@ const RoutesList: React.FC = () => {
 
   return (
     <Container>
-      <InfoBar>
-        excelsiumjs
-      </InfoBar>
       <FilterBar />
       <WorkspaceList>
         <PrincipalFolder>

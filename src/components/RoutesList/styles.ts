@@ -3,26 +3,19 @@ import { FaRegFolder } from 'react-icons/fa'
 
 export const Container = styled.div`
   width: 22%;
-  background-color: var(--current);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-`
-
-export const InfoBar = styled.div`
-  width: 100%;
   background-color: var(--background2);
-  font-weight: 600;
-  color: var(--foreground);
-  font-size: 1.4rem;
-  padding: 1.2rem 1.6rem;
-  z-index: 3;
+  height: calc(100% - 4rem);
+  display: flex;
+  z-index: 4;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  flex-direction: column;
 `
 
 export const WorkspaceList = styled.div`
   flex-grow: 1;
   overflow-y: scroll;
   padding: 1.3rem 1rem;
+  z-index: 1;
 
   ::-webkit-scrollbar {
     width: 6px;
