@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-import { Container, InfoBar, RequisicaoHeader, RequisicaoType, RequisicaoUrl, RequisicaoSend, ArrowIcon } from './styles'
+import { Container, InfoBar, RequisicaoHeader, RequisicaoType, RequisicaoUrl, RequisicaoSend, ArrowIcon, ListTypes, Type } from './styles'
 
 export interface Props {
-  tipo: number
+  tipo: string
   url: string
 }
 
@@ -15,33 +15,35 @@ const NavBar: React.FC<Props> = ({
   const [types, setTypes] = useState([
     {
       id: 1,
-      name: 'get',
-      selected: false
+      name: 'get'
     },
     {
       id: 2,
-      name: 'post',
-      selected: false
+      name: 'post'
     },
     {
       id: 3,
-      name: 'put',
-      selected: false
+      name: 'put'
     },
     {
       id: 4,
-      name: 'del',
-      selected: false
+      name: 'del'
     }
   ])
-  
-  let selectedType
 
-  types.map(type => {
-    if(type.id == tipo) {
-      selectedType = type.name
-    }
-  })
+  const [selectedType, setSelectedType] = useState(tipo)
+  const [viewListTypes, setViewListTypes] = useState(false)
+
+  function handleListTypes() {
+    setViewListTypes(!viewListTypes)
+  }
+
+  function handleSelectedType(id: number) {
+    types.map(type => {
+      if (type.id === id) setSelectedType(type.name)
+    })
+    handleListTypes()
+  }
 
   return (
     <Container>
@@ -50,17 +52,26 @@ const NavBar: React.FC<Props> = ({
       </InfoBar>
       <RequisicaoHeader>
         <div className="requisicao__info">
-          <RequisicaoType className={selectedType}>
+          <RequisicaoType onClick={() => handleListTypes()}>
             <span>
               { selectedType }
             </span>
-            <ArrowIcon className={selectedType} />
+            <ArrowIcon />
           </RequisicaoType>
           <RequisicaoUrl value={url} />
         </div>
         <RequisicaoSend>
           Enviar
         </RequisicaoSend>
+        <ListTypes className={viewListTypes ? 'active' : ''}>
+          {
+            types.map(type => (
+              <Type key={type.id} onClick={() => handleSelectedType(type.id)}>
+                {type.name}
+              </Type>
+            ))
+          }
+        </ListTypes>
       </RequisicaoHeader>
     </Container>
   )
