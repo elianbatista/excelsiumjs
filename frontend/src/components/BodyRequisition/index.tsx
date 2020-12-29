@@ -1,24 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Container } from './styles'
-import MonacoEditor from 'react-monaco-editor'
+
+import CodeEditor from './CodeEditor'
 
 const BodyRequisition: React.FC = () => {
-  const [code, setCode] = useState()
 
   return (
     <Container>
-      <MonacoEditor
-        language="html"
-        value={code}
-        height='600'
-        options={{
-          selectOnLineNumbers: true,
-          roundedSelection: false,
-          cursorStyle: 'line',
-          automaticLayout: false,
-          theme: 'vs-dark',
-        }}
-      />
+      <CodeEditor language="javascript" />
     </Container>
   )
 }

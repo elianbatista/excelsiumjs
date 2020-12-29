@@ -91,7 +91,7 @@ export const ListTypes = styled.ul`
   width: 200px;
   border-radius: 4px;
   opacity: 0;
-  visibility: visible;
+  visibility: hidden;
   transition: all .3s;
 
   li:first-child {
