@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Container } from './styles'
 import MonacoEditor from 'react-monaco-editor'
 
-const RequisicaoInfo: React.FC = () => {
+const BodyRequisition: React.FC = () => {
   const [code, setCode] = useState()
 
   return (
@@ -23,4 +23,4 @@ const RequisicaoInfo: React.FC = () => {
   )
 }
 
-export default RequisicaoInfo
+export default BodyRequisition
