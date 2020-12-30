@@ -5,8 +5,7 @@ export const Container = styled.div`
   padding: 1rem 0.8rem;
   height: 4.2rem;
   display: flex;
-  //box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  border-bottom: 2px solid var(--background);
+  border-bottom: 2px solid rgba(0,0,0,0.1);
   z-index: 2;
   background-color: var(--background2);
 `
