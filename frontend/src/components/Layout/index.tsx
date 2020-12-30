@@ -5,6 +5,7 @@ import { Container } from './styles'
 import NavBar from '../NavBar'
 import RoutesList from '../RoutesList'
 import BodyRequisition from '../BodyRequisition'
+import ReturnRequisition from '../ReturnRequisition'
 
 const Layout: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const Layout: React.FC = () => {
       <NavBar  />
       <RoutesList />
       <BodyRequisition />
+      <ReturnRequisition />
     </Container>
   )
 }
