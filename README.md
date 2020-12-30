@@ -1,9 +1,9 @@
 # ExcelsiumJs 
 A open source web solution for real-time colaborative REST client
 
-## Build With
+## Why?
 
-## Features
+## Try it
 
 ## Licence
 ## Contribution Guidelines
