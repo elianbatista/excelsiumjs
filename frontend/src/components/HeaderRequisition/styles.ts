@@ -3,9 +3,10 @@ import { FiChevronDown } from 'react-icons/fi'
 
 export const Container = styled.div`
   position: relative;
-  height: 4.2rem;
+  height: 3.9rem;
   width: 100%;
-  background-color: var(--selection);
+  //background-color: var(--selection);
+  background-color: rgba(255,255,255,0.06);
   padding: 0 1.4rem;
   display: flex;
   align-items: center;
@@ -22,7 +23,9 @@ export const Container = styled.div`
 export const RequisicaoType = styled.div`
   text-transform: uppercase;
   color: var(--red);
-  font-size: 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01rem;
   margin-right: 1rem;
   display: flex;
   padding: 0.6rem 0.6rem 0.6rem 0.8rem;
@@ -47,14 +50,14 @@ export const ArrowIcon = styled(FiChevronDown)`
 export const RequisicaoUrl = styled.input`
   color: var(--light-gray);
   background-color: transparent;
-  font-size: 1.1rem;
+  font-size: 1rem;
   width: 100%;
 `
 
 export const RequisicaoSend = styled.button `
   background-color: transparent;
   padding: 0.5rem 1rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--light-gray);
   cursor: pointer;
   transition: background-color .2s;
