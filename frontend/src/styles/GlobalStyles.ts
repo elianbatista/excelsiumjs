@@ -23,7 +23,7 @@ export default createGlobalStyle`
     --current: #343746;
     --selection: #44475a;
     --gray: #9E9E9E;
-    --light-gray: #c9d1d9;
+    --light-gray: #acb6bf;
     --foreground: #f8f8f2;
     --comment: #6272a4;
     --cyan: #8be9fd;
