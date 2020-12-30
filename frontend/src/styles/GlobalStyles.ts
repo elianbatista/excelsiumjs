@@ -34,18 +34,4 @@ export default createGlobalStyle`
     --red: #ff5555;
     --yellow: #f1fa8c;
   }
-
-  .view-lines.monaco-mouse-cursor-text {
-    background-color: var(--background) !important;
-  }
-  .margin-view-overlays {
-    background-color: var(--background) !important;
-  }
-  .line-numbers {
-    color: var(--comment) !important;
-  }
-  .minimap-decorations-layer {
-    background-color: var(--background) !important;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  }
 `

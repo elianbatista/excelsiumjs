@@ -9,7 +9,7 @@ import BodyRequisition from '../BodyRequisition'
 const Layout: React.FC = () => {
   return (
     <Container>
-      <NavBar tipo="post" url="http://localhost:3333/api/pagamento" />
+      <NavBar  />
       <RoutesList />
       <BodyRequisition />
     </Container>

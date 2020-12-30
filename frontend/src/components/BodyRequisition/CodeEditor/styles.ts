@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
-  height: calc(100% - 4rem);
-  padding: 2rem;
+  height: calc(100% - 4rem - 4.2rem);
+  padding-left: 1.4rem;
 
   > .code-edit-container {
     position: relative;

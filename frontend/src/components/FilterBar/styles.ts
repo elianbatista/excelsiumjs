@@ -2,24 +2,25 @@ import styled from 'styled-components'
 import { FaRegFolder, FaPlusCircle, FaSortDown } from 'react-icons/fa'
 
 export const Container = styled.div`
-  padding: 1rem;
+  padding: 1rem 0.8rem;
+  height: 4.2rem;
   display: flex;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  //box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  border-bottom: 2px solid var(--background);
   z-index: 2;
-  //background-color: var(--current);
-  background-color: var(--red);
+  background-color: var(--background2);
 `
 
 export const FilterField = styled.input`
   width: 100%;
   background-color: transparent;
-  border: 1px solid var(--foreground);
+  border: 1px solid var(--light-gray);
   border-radius: 3px;
   padding: 0.6rem 0.8rem;
   font-size: 1rem;
-  color: var(--foreground);
+  color: var(--light-gray);
   ::placeholder {
-    color: var(--foreground);
+    color: var(--light-gray);
   }
 `
 
@@ -41,14 +42,14 @@ export const ContentIcons = styled.div`
 export const AddIcon = styled(FaPlusCircle)`
   width: 16px;
   height: 16px;
-  color: var(--foreground);
+  color: var(--light-gray);
   margin-right: 0.2rem;
 `
 
 export const ArrowIcon = styled(FaSortDown)`
   width: 18px;
   height: 18px;
-  color: var(--foreground);
+  color: var(--light-gray);
 `
 
 export const BoxAdd = styled.ul`
