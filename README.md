@@ -5,6 +5,6 @@ A open source web solution for real-time colaborative REST client
 
 ## Try it
 
-## Licence
+
 ## Contribution Guidelines
-## Contribuitors
+
