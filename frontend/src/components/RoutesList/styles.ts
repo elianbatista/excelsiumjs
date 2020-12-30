@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { FaRegFolder } from 'react-icons/fa'
 
 export const Container = styled.div`
-  width: 22%;
+  width: 20%;
   background-color: var(--background2);
   height: calc(100% - 4rem);
   display: flex;
