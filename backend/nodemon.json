@@ -1,0 +1,10 @@
+{
+  "watch": [
+    "src"
+  ],
+  "ext": "ts",
+  "execMap": {
+    "ts": "rimraf dist && tsc -p tsconfig-build.json"
+  },
+  "exec": "rimraf dist && tsc -p tsconfig-build.json && node dist/src/main/server.js"
+}
