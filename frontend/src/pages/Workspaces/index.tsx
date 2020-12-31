@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Container, EyeIcon } from './styles'
 
 import CollaborateImg from '../../images/collaborate.png'
+import BoxNewWorkspace from './BoxNewWorkspace'
 
 const WorkspacesPage: React.FC = () => {
+  const [boxNewWorkspace, setBoxNewWorkspace] = useState(false)
+
+  function handleBoxNewWorkspace() {
+    setBoxNewWorkspace(!boxNewWorkspace)
+  }
+
   return (
     <Container>
       <div className="left-side">
@@ -44,7 +51,7 @@ const WorkspacesPage: React.FC = () => {
             </li>
           </ul>
           <div className="content-buttons">
-            <button>
+            <button onClick={handleBoxNewWorkspace}>
               New Workspace
             </button>
             <button className="color">
@@ -53,6 +60,7 @@ const WorkspacesPage: React.FC = () => {
           </div>
         </div>
       </div>
+      <BoxNewWorkspace active={boxNewWorkspace} handleActive={setBoxNewWorkspace} />
     </Container>
   )
 }
