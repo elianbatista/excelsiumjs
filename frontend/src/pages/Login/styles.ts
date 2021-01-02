@@ -42,11 +42,13 @@ export const Container = styled.div`
     justify-content: center;
   }
 
-  > .right-side h1 {
-    font-size: 2rem;
+  > .right-side .content-logo {
     text-align: center;
-    color: var(--red);
     margin-bottom: 3rem;
+  }
+
+  > .right-side .content-logo img {
+    width: 80%;
   }
 
   > .right-side .box-login {
