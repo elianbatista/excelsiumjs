@@ -3,6 +3,7 @@ import React from 'react'
 import { Container } from './styles'
 
 import CollaborateImg from '../../images/collaborate.png'
+import LogoHorizontalBranco from '../../images/logo-horizontal-branco.png'
 
 const RegisterPage: React.FC = () => {
   return (
@@ -15,9 +16,9 @@ const RegisterPage: React.FC = () => {
       </div>
       <div className="right-side">
         <div className="box-login">
-          <h1>
-            Excelsium.js
-          </h1>
+          <div className="content-logo">
+            <img src={LogoHorizontalBranco} alt="Logo Horizontal Branca Excelsium.js"/>
+          </div>
           <form>
             <div className="field-input">
               <label>
