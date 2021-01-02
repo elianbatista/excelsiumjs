@@ -19,14 +19,17 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
   }
-`
 
-export const InfoBar = styled.div`
-  width: 22%;
-  font-weight: 600;
-  color: var(--foreground);
-  font-size: 1.4rem;
-  z-index: 3;
+  > div.content-logo {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  > div.content-logo img {
+    width: 12rem;
+  }
 `
 
 export const UsuariosList = styled.div`
