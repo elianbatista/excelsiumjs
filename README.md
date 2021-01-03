@@ -1,5 +1,7 @@
 ![GitHub](https://img.shields.io/github/license/elianbatista/excelsiumjs)
-# ExcelsiumJs 
+
+<img src="https://github.com/elianbatista/excelsiumjs/blob/master/images/excelsium_gitlogo.jpeg"  width="500" height="339">
+
 A open source web solution for real-time colaborative REST client, build on top of react and nodejs (Express, SockeIO) 
 
 ## Why?
