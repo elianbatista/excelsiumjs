@@ -11,7 +11,7 @@ class App {
 
     constructor() {
         this.routes()
-        this.io = new SocketServer(8080)
+        this.io = SocketServer
 
     }
 
