@@ -9,13 +9,13 @@
 6. [X] Create an account for the user with the data provided.
 7. [X] Generates an **access token** from the user ID.
 8. [] Updates user data with the generated token.
-9. [] Returns 201 with the access token and the user data without the password.
+9. [X] Returns 201 with the access token and the user data without the password.
 
 > ## Exceptions
 1. [X] Returns **404** error if the api does not exist.
 2. [X] Returns **400** error if name, email or password are not provided.
 3. [X] Returns **400** error if email is invalid.
-4. [] Returns **403** error if email already in use.
+4. [X] Returns **403** error if email already in use.
 5. [X] Returns **500** error if password encryption fails.
 6. [X] Returns **500** error if create account fails.
 7. [X] Returns **500** error if generate access token fails.

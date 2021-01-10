@@ -1,7 +1,8 @@
 import { SignUpController } from './signup-controller'
 import { HttpRequest, Validator, User, AddUser, UserModel } from './signup-protocols'
 import { InvalidParamError, MissingParamError } from '../../errors/'
-import { badRequest, created } from '../../helpers/http/http-helper'
+import { badRequest, created, forbbiden } from '../../helpers/http/http-helper'
+import { ForbbidenError } from '../../../data/errors/forbbiden-error'
 
 const makeAddUser = (): AddUser => {
   class AddUserStub implements AddUser {
@@ -153,5 +154,11 @@ describe('Sign Up', () => {
     expect(validationSpy).toHaveBeenCalledWith(httpRequest.body)
   })
 
-  // TODO ensure signup controller retuns 403 if email already exists
+  test('Should return 403 if email already exists', async () => {
+    const { sut, addUserStub } = makeSut()
+    jest.spyOn(addUserStub, 'add')
+      .mockReturnValueOnce(new Promise((resolve, reject) => reject(new ForbbidenError('Email already exists'))))
+    const result = await sut.handle(makeFakeRequest())
+    expect(result).toEqual(forbbiden(new ForbbidenError('Email already exists')))
+  })
 })

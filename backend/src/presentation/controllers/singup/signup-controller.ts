@@ -1,5 +1,5 @@
 import { HttpRequest, HttpResponse, AddUser, Validator, Controller } from './signup-protocols'
-import { badRequest, created, serverError } from '../../helpers/http/http-helper'
+import { badRequest, created, forbbiden, serverError } from '../../helpers/http/http-helper'
 
 export class SignUpController implements Controller {
   constructor (
@@ -17,6 +17,9 @@ export class SignUpController implements Controller {
       const userModel = await this.addUser.add(user)
       return created(userModel)
     } catch (error) {
+      if (error.name === 'ForbbidenError') {
+        return forbbiden(error)
+      }
       return serverError(error)
     }
   }
