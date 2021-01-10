@@ -1,8 +1,5 @@
+import { HttpRequest, HttpResponse, AddUser, Validator, Controller } from './signup-protocols'
 import { badRequest, created } from '../../helpers/http/http-helper'
-import { Controller } from '../../protocols/controller'
-import { HttpRequest, HttpResponse } from '../../protocols/http'
-import { AddUser } from '../../../domain/usecases/add-user'
-import { Validator } from '../../protocols/validator'
 
 export class SignUpController implements Controller {
   constructor (

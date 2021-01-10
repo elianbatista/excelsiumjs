@@ -1,11 +1,7 @@
-import { User } from '../../../domain/entities/user'
-import { AddUser, UserModel } from '../../../domain/usecases/add-user'
-import { InvalidParamError } from '../../errors/invalid-param-error'
-import { MissingParamError } from '../../errors/missing-param-error'
-import { badRequest, created } from '../../helpers/http/http-helper'
-import { HttpRequest } from '../../protocols/http'
-import { Validator } from '../../protocols/validator'
 import { SignUpController } from './signup-controller'
+import { HttpRequest, Validator, User, AddUser, UserModel } from './signup-protocols'
+import { InvalidParamError, MissingParamError } from '../../errors/'
+import { badRequest, created } from '../../helpers/http/http-helper'
 
 const makeAddUser = (): AddUser => {
   class AddUserStub implements AddUser {
