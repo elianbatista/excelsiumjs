@@ -136,4 +136,11 @@ describe('DbAddUser', () => {
     }
     expect(encrypterSpy).toHaveBeenCalledWith(fakeUser)
   })
+
+  test('Should throw if encrypter throws', async () => {
+    const { sut, encrypterStub } = makeSut()
+    jest.spyOn(encrypterStub, 'encrypt').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
+    const promise = sut.add(makeFakeUser())
+    await expect(promise).rejects.toThrow()
+  })
 })
