@@ -4,7 +4,7 @@
 1. [] Receive a **POST** requisition in the **/api/signup** route.
 2. [X] Validate obrigatory data **name**, **email** and **password**.
 3. [X] Validate if the **email** is valid.
-4. [] Validate if already exists a user with the **email** provided.
+4. [X] Validate if already exists a user with the **email** provided.
 5. [] Generates an **encrypted** password.
 6. [X] Create an account for the user with the data provided.
 7. [] Generates an **access token** from the user ID.

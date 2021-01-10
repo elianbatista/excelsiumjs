@@ -152,4 +152,6 @@ describe('Sign Up', () => {
     await sut.handle(httpRequest)
     expect(validationSpy).toHaveBeenCalledWith(httpRequest.body)
   })
+
+  // TODO ensure signup controller retuns 403 if email already exists
 })
