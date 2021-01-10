@@ -9,7 +9,7 @@
 6. [X] Create an account for the user with the data provided.
 7. [] Generates an **access token** from the user ID.
 8. [] Updates user data with the generated token.
-9. [] Returns 201 with the access token and the user name.
+9. [] Returns 201 with the access token and the user data.
 
 > ## Exceptions
 1. [X] Returns **404** error if the api does not exist.
