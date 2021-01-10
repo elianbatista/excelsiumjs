@@ -131,4 +131,17 @@ describe('Sign Up', () => {
     const httResponse = await sut.handle(makeFakeRequest())
     expect(httResponse.statusCode).toBe(500)
   })
+
+  test('Should call AddUser with correct values', async () => {
+    const { sut, addUserStub } = makeSut()
+    const addSpy = jest.spyOn(addUserStub, 'add')
+    await sut.handle(makeFakeRequest())
+    expect(addSpy).toHaveBeenCalledWith(
+      {
+        name: 'any_name',
+        password: 'any_password',
+        email: 'any_email@email.com'
+      }
+    )
+  })
 })

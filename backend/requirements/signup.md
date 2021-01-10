@@ -16,7 +16,7 @@
 2. [X] Returns **400** error if name, email or password are not provided.
 3. [X] Returns **400** error if email is invalid.
 4. [] Returns **403** error if email already in use.
-5. [] Returns **500** error if password encryption fails.
-6. [] Returns **500** error if create account fails.
-7. [] Returns **500** error if generate access token fails.
-8. [] Returns **500** error if update user with access token fails.
+5. [X] Returns **500** error if password encryption fails.
+6. [X] Returns **500** error if create account fails.
+7. [X] Returns **500** error if generate access token fails.
+8. [X] Returns **500** error if update user with access token fails.
