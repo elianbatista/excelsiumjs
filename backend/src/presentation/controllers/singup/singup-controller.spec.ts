@@ -2,19 +2,10 @@ import { User } from '../../../domain/entities/user'
 import { AddUser, UserModel } from '../../../domain/usecases/add-user'
 import { InvalidParamError } from '../../errors/invalid-param-error'
 import { MissingParamError } from '../../errors/missing-param-error'
-import { badRequest } from '../../helpers/http/http-helper'
-import { EmailValidator } from '../../protocols/email-validator'
+import { badRequest, created } from '../../helpers/http/http-helper'
 import { HttpRequest } from '../../protocols/http'
+import { Validator } from '../../protocols/validator'
 import { SignUpController } from './signup-controller'
-
-const makeEmailValidator = (): EmailValidator => {
-  class EmailValidatorStub implements EmailValidator {
-    isValid (email: string): boolean {
-      return true
-    }
-  }
-  return new EmailValidatorStub()
-}
 
 const makeAddUser = (): AddUser => {
   class AddUserStub implements AddUser {
@@ -24,20 +15,29 @@ const makeAddUser = (): AddUser => {
   }
   return new AddUserStub()
 }
+
+const makeValidator = (): Validator => {
+  class ValidatorStub implements Validator {
+    validate (body: any): Error {
+      return null
+    }
+  }
+  return new ValidatorStub()
+}
 interface sutTypes {
   sut: SignUpController
-  emailValidatorStub: EmailValidator
+  validatorStub: Validator
 }
 
 const makeSut = (): sutTypes => {
-  const emailValidatorStub = makeEmailValidator()
+  const validatorStub = makeValidator()
   const sut = new SignUpController(
-    emailValidatorStub,
-    makeAddUser()
+    makeAddUser(),
+    validatorStub
   )
   return {
     sut,
-    emailValidatorStub
+    validatorStub
   }
 }
 
@@ -61,7 +61,9 @@ const makeFakeHttpRequest = (): HttpRequest => ({
 
 describe('Sign Up', () => {
   test('Should return 400 if no email is provided', async () => {
-    const { sut } = makeSut()
+    const { sut, validatorStub } = makeSut()
+    jest.spyOn(validatorStub, 'validate')
+      .mockReturnValueOnce(new MissingParamError('email'))
     const httpRequest: HttpRequest = {
       body: {
         name: 'any_name',
@@ -73,7 +75,9 @@ describe('Sign Up', () => {
   })
 
   test('Should return 400 if no password is provided', async () => {
-    const { sut } = makeSut()
+    const { sut, validatorStub } = makeSut()
+    jest.spyOn(validatorStub, 'validate')
+      .mockReturnValueOnce(new MissingParamError('password'))
     const httpRequest: HttpRequest = {
       body: {
         name: 'any_name',
@@ -85,7 +89,9 @@ describe('Sign Up', () => {
   })
 
   test('Should return 400 if no name is provided', async () => {
-    const { sut } = makeSut()
+    const { sut, validatorStub } = makeSut()
+    jest.spyOn(validatorStub, 'validate')
+      .mockReturnValueOnce(new MissingParamError('name'))
     const httpRequest: HttpRequest = {
       body: {
         password: 'any_password',
@@ -97,9 +103,9 @@ describe('Sign Up', () => {
   })
 
   test('Should return 400 if a invalid email is provided', async () => {
-    const { sut, emailValidatorStub } = makeSut()
-    jest.spyOn(emailValidatorStub, 'isValid')
-      .mockReturnValueOnce(false)
+    const { sut, validatorStub } = makeSut()
+    jest.spyOn(validatorStub, 'validate')
+      .mockReturnValueOnce(new InvalidParamError('email'))
     const httpRequest: HttpRequest = {
       body: {
         name: 'any_name',
@@ -112,8 +118,9 @@ describe('Sign Up', () => {
   })
 
   test('Should return 201 if an user is created', async () => {
-    const { sut } = makeSut()
+    const { sut, validatorStub } = makeSut()
+    jest.spyOn(validatorStub, 'validate').mockReturnValueOnce(null)
     const result = await sut.handle(makeFakeHttpRequest())
-    expect(result.statusCode).toBe(201)
+    expect(result).toEqual(created(makeFakeUserModel()))
   })
 })
