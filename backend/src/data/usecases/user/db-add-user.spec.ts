@@ -1,5 +1,6 @@
 import { User } from '../../../domain/entities/user'
 import { UserModel } from '../../models/user-model'
+import { Encrypter } from '../../protocols/cryptography/encrypter'
 import { Hasher } from '../../protocols/cryptography/hasher'
 import { AddUserRepository } from '../../repositories/user/add-user-repository'
 import { FindUserByEmailRepository } from '../../repositories/user/find-user-by-email-repository'
@@ -32,6 +33,15 @@ const makeHasher = (): Hasher => {
   return new HasherStub()
 }
 
+const makeEncrypter = (): Encrypter => {
+  class EncrypterStub implements Encrypter {
+    async encrypt (value: string): Promise<string> {
+      return new Promise(resolve => resolve('any_token'))
+    }
+  }
+  return new EncrypterStub()
+}
+
 const makeFakeUser = (): User => ({
   name: 'valid_name',
   email: 'valid_email',
@@ -51,18 +61,26 @@ interface SutTypes {
   findUserByEmailStub: FindUserByEmailRepository
   hasherStub: Hasher
   addUserRepositoryStub: AddUserRepository
+  encrypterStub: Encrypter
 }
 
 const makeSut = (): SutTypes => {
   const findUserByEmailStub = makeFindUserByEmailRepository()
   const hasherStub = makeHasher()
   const addUserRepositoryStub = makeAddUserRepository()
-  const sut = new DbAddUser(addUserRepositoryStub, findUserByEmailStub, hasherStub)
+  const encrypterStub = makeEncrypter()
+  const sut = new DbAddUser(
+    addUserRepositoryStub,
+    findUserByEmailStub,
+    hasherStub,
+    encrypterStub
+  )
   return {
     sut,
     findUserByEmailStub,
     hasherStub,
-    addUserRepositoryStub
+    addUserRepositoryStub,
+    encrypterStub
   }
 }
 
@@ -105,5 +123,17 @@ describe('DbAddUser', () => {
     jest.spyOn(addUserRepositoryStub, 'add').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
     const promise = sut.add(makeFakeUser())
     await expect(promise).rejects.toThrow()
+  })
+
+  test('Should call encrypter with correct values', async () => {
+    const { sut, encrypterStub } = makeSut()
+    const encrypterSpy = jest.spyOn(encrypterStub, 'encrypt')
+    await sut.add(makeFakeUser())
+    const fakeUser = {
+      id: 'any_id',
+      name: 'any_name',
+      email: 'any_email@email.com'
+    }
+    expect(encrypterSpy).toHaveBeenCalledWith(fakeUser)
   })
 })
