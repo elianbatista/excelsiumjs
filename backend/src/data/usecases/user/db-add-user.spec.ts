@@ -1,3 +1,4 @@
+import { ForbbidenError } from '../../errors/forbbiden-error'
 import { DbAddUser } from './db-add-user'
 import { User, UserModel, Encrypter, Hasher, AddUserRepository, FindUserByEmailRepository } from './db-add-user-protocols'
 
@@ -39,7 +40,7 @@ const makeEncrypter = (): Encrypter => {
 
 const makeFakeUser = (): User => ({
   name: 'valid_name',
-  email: 'valid_email',
+  email: 'valid_email@email.com',
   password: 'valid_password'
 })
 
@@ -79,12 +80,19 @@ const makeSut = (): SutTypes => {
 }
 
 describe('DbAddUser', () => {
+  test('Should call findUserByEmailRepository with correct email', async () => {
+    const { sut, findUserByEmailStub } = makeSut()
+    const findUserByEmailStubSpy = jest.spyOn(findUserByEmailStub, 'find')
+    await sut.add(makeFakeUser())
+    expect(findUserByEmailStubSpy).toHaveBeenCalledWith('valid_email@email.com')
+  })
+
   test('Shold throw if email already exists', async () => {
-    const { sut } = makeSut()
-    jest.spyOn(sut, 'add')
-      .mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error('teste'))))
+    const { sut, findUserByEmailStub } = makeSut()
+    jest.spyOn(findUserByEmailStub, 'find')
+      .mockReturnValueOnce(new Promise(resolve => resolve(makeFakeUserModel())))
     const promise = sut.add(makeFakeUser())
-    await expect(promise).rejects.toThrow()
+    await expect(promise).rejects.toThrow(new ForbbidenError('Email already exists'))
   })
 
   test('Should call hasher with correct password', async () => {
@@ -107,7 +115,7 @@ describe('DbAddUser', () => {
     await sut.add(makeFakeUser())
     expect(addSpy).toHaveBeenCalledWith({
       name: 'valid_name',
-      email: 'valid_email',
+      email: 'valid_email@email.com',
       password: 'hashed_password'
     })
   })
