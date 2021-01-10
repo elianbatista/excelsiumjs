@@ -1,11 +1,5 @@
-import { User } from '../../../domain/entities/user'
-import { AddUser } from '../../../domain/usecases/add-user'
+import { User, AddUser, UserModel, Encrypter, Hasher, AddUserRepository, FindUserByEmailRepository } from './db-add-user-protocols'
 import { ForbbidenError } from '../../errors/forbbiden-error'
-import { UserModel } from '../../models/user-model'
-import { Encrypter } from '../../protocols/cryptography/encrypter'
-import { Hasher } from '../../protocols/cryptography/hasher'
-import { AddUserRepository } from '../../repositories/user/add-user-repository'
-import { FindUserByEmailRepository } from '../../repositories/user/find-user-by-email-repository'
 
 export class DbAddUser implements AddUser {
   constructor (

@@ -1,10 +1,5 @@
-import { User } from '../../../domain/entities/user'
-import { UserModel } from '../../models/user-model'
-import { Encrypter } from '../../protocols/cryptography/encrypter'
-import { Hasher } from '../../protocols/cryptography/hasher'
-import { AddUserRepository } from '../../repositories/user/add-user-repository'
-import { FindUserByEmailRepository } from '../../repositories/user/find-user-by-email-repository'
 import { DbAddUser } from './db-add-user'
+import { User, UserModel, Encrypter, Hasher, AddUserRepository, FindUserByEmailRepository } from './db-add-user-protocols'
 
 const makeFindUserByEmailRepository = (): FindUserByEmailRepository => {
   class FindUserByEmailRepositoryStub implements FindUserByEmailRepository {
