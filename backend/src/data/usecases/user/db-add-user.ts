@@ -1,6 +1,6 @@
 import { User } from '../../../domain/entities/user'
 import { AddUser } from '../../../domain/usecases/add-user'
-import { ForbbidenError } from '../../erros/forbbiden-error'
+import { ForbbidenError } from '../../errors/forbbiden-error'
 import { UserModel } from '../../models/user-model'
 import { Encrypter } from '../../protocols/cryptography/encrypter'
 import { Hasher } from '../../protocols/cryptography/hasher'
