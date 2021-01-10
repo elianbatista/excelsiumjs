@@ -23,16 +23,19 @@ const makeValidator = (): Validator => {
 interface sutTypes {
   sut: SignUpController
   validatorStub: Validator
+  addUserStub: AddUser
 }
 
 const makeSut = (): sutTypes => {
   const validatorStub = makeValidator()
+  const addUserStub = makeAddUser()
   const sut = new SignUpController(
-    makeAddUser(),
+    addUserStub,
     validatorStub
   )
   return {
     sut,
+    addUserStub,
     validatorStub
   }
 }
@@ -51,7 +54,7 @@ const makeFakeUserModel = (): UserModel => ({
   email: 'any_email@email.com'
 })
 
-const makeFakeHttpRequest = (): HttpRequest => ({
+const makeFakeRequest = (): HttpRequest => ({
   body: makeFakeUser()
 })
 
@@ -116,7 +119,16 @@ describe('Sign Up', () => {
   test('Should return 201 if an user is created', async () => {
     const { sut, validatorStub } = makeSut()
     jest.spyOn(validatorStub, 'validate').mockReturnValueOnce(null)
-    const result = await sut.handle(makeFakeHttpRequest())
+    const result = await sut.handle(makeFakeRequest())
     expect(result).toEqual(created(makeFakeUserModel()))
+  })
+
+  test('Should return 500 if add user throws', async () => {
+    const { sut, addUserStub } = makeSut()
+    jest.spyOn(addUserStub, 'add').mockImplementationOnce(async () => {
+      return new Promise((resolve, reject) => reject(new Error()))
+    })
+    const httResponse = await sut.handle(makeFakeRequest())
+    expect(httResponse.statusCode).toBe(500)
   })
 })
