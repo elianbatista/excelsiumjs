@@ -1,3 +1,5 @@
+import { User } from '../../../domain/entities/user'
+import { AddUser, UserModel } from '../../../domain/usecases/add-user'
 import { InvalidParamError } from '../../errors/invalid-param-error'
 import { MissingParamError } from '../../errors/missing-param-error'
 import { badRequest } from '../../helpers/http/http-helper'
@@ -7,35 +9,55 @@ import { SignUpController } from './signup-controller'
 
 const makeEmailValidator = (): EmailValidator => {
   class EmailValidatorStub implements EmailValidator {
-    is_valid (email: string): boolean {
+    isValid (email: string): boolean {
       return true
     }
   }
   return new EmailValidatorStub()
 }
+
+const makeAddUser = (): AddUser => {
+  class AddUserStub implements AddUser {
+    async add (user: User): Promise<UserModel> {
+      return new Promise(resolve => resolve(makeFakeUserModel()))
+    }
+  }
+  return new AddUserStub()
+}
 interface sutTypes {
   sut: SignUpController
-  email_validator_stub: EmailValidator
+  emailValidatorStub: EmailValidator
 }
 
 const makeSut = (): sutTypes => {
-  const email_validator_stub = makeEmailValidator()
-  const sut = new SignUpController(email_validator_stub)
+  const emailValidatorStub = makeEmailValidator()
+  const sut = new SignUpController(
+    emailValidatorStub,
+    makeAddUser()
+  )
   return {
     sut,
-    email_validator_stub
+    emailValidatorStub
   }
 }
 
-// const makeFakeAccount = (): any => ({
-//   name: 'any_name',
-//   password: 'any_password',
-//   email: 'any_email@email.com'
-// })
+const makeFakeUser = (): User => ({
+  name: 'any_name',
+  password: 'any_password',
+  email: 'any_email@email.com'
+})
 
-// const makeFakeHttpRequest = (): HttpRequest => ({
-//   body: makeFakeAccount()
-// })
+const makeFakeUserModel = (): UserModel => ({
+  id: 'any_id',
+  accessToken: 'any_token',
+  name: 'any_name',
+  password: 'any_password',
+  email: 'any_email@email.com'
+})
+
+const makeFakeHttpRequest = (): HttpRequest => ({
+  body: makeFakeUser()
+})
 
 describe('Sign Up', () => {
   test('Should return 400 if no email is provided', async () => {
@@ -75,8 +97,8 @@ describe('Sign Up', () => {
   })
 
   test('Should return 400 if a invalid email is provided', async () => {
-    const { sut, email_validator_stub } = makeSut()
-    jest.spyOn(email_validator_stub, 'is_valid')
+    const { sut, emailValidatorStub } = makeSut()
+    jest.spyOn(emailValidatorStub, 'isValid')
       .mockReturnValueOnce(false)
     const httpRequest: HttpRequest = {
       body: {
@@ -87,5 +109,11 @@ describe('Sign Up', () => {
     }
     const result = await sut.handle(httpRequest)
     expect(result).toEqual(badRequest(new InvalidParamError('email')))
+  })
+
+  test('Should return 201 if an user is created', async () => {
+    const { sut } = makeSut()
+    const result = await sut.handle(makeFakeHttpRequest())
+    expect(result.statusCode).toBe(201)
   })
 })

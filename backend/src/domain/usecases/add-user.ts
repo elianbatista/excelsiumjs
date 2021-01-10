@@ -1,5 +1,12 @@
 import { User } from '../entities/user'
-import { UserModel } from '../../data/models/user-model'
+
+export interface UserModel {
+  id: string
+  accessToken: string
+  name: string
+  email: string
+  password: string
+}
 
 export interface AddUser {
   add: (user: User) => Promise<UserModel>

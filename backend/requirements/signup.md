@@ -2,8 +2,8 @@
 
 > ## Success Cases
 1. [] Receive a **POST** requisition in the **/api/signup** route.
-2. [] Validate obrigatory data **name**, **email** and **password**.
-3. [] Validate if the **email** is valid.
+2. [X] Validate obrigatory data **name**, **email** and **password**.
+3. [X] Validate if the **email** is valid.
 4. [] Validate if already exists a user with the **email** provided.
 5. [] Generates an **encrypted** password.
 6. [] Create an account for the user with the data provided.
@@ -14,7 +14,7 @@
 > ## Exceptions
 1. [X] Returns **404** error if the api does not exist.
 2. [X] Returns **400** error if name, email or password are not provided.
-3. [] Returns **400** error if email is invalid.
+3. [X] Returns **400** error if email is invalid.
 4. [] Returns **403** error if email already in use.
 5. [] Returns **500** error if password encryption fails.
 6. [] Returns **500** error if create account fails.

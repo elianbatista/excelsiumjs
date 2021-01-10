@@ -6,3 +6,10 @@ export const badRequest = (error: Error): HttpResponse => (
     body: error
   }
 )
+
+export const created = (body: any): HttpResponse => (
+  {
+    statusCode: 201,
+    body
+  }
+)
