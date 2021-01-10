@@ -7,7 +7,7 @@
 4. [X] Validate if already exists a user with the **email** provided.
 5. [X] Generates an **encrypted** password.
 6. [X] Create an account for the user with the data provided.
-7. [] Generates an **access token** from the user ID.
+7. [X] Generates an **access token** from the user ID.
 8. [] Updates user data with the generated token.
 9. [] Returns 201 with the access token and the user data without the password.
 

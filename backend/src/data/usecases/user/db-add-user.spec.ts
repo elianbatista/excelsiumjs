@@ -52,7 +52,6 @@ const makeFakeUserModel = (): UserModel => ({
   id: 'any_id',
   accessToken: 'any_token',
   name: 'any_name',
-  password: 'any_password',
   email: 'any_email@email.com'
 })
 
@@ -142,5 +141,11 @@ describe('DbAddUser', () => {
     jest.spyOn(encrypterStub, 'encrypt').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
     const promise = sut.add(makeFakeUser())
     await expect(promise).rejects.toThrow()
+  })
+
+  test('Should return an user without the password on success', async () => {
+    const { sut } = makeSut()
+    const account = await sut.add(makeFakeUser())
+    expect(account).toEqual(makeFakeUserModel())
   })
 })

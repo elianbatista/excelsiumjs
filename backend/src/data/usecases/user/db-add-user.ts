@@ -31,6 +31,8 @@ export class DbAddUser implements AddUser {
       }
     )
     userModel.accessToken = accesstoken
+    // TODO update user to save the access token on the database
+    delete userModel.password
     return userModel
   }
 }
