@@ -27,6 +27,9 @@ const FilterBar: React.FC = () => {
             <Title>
               Nova Requisição
             </Title>
+            <Title>
+              Nova Requisição
+            </Title>
           </ButtonAdd>
           <ButtonAdd>
             <FolderIcon />
